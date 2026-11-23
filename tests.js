@@ -71,3 +71,15 @@ addCase({
   ],
   expect: { minutes: 0, count: 0 }
 });
+
+addCase({
+  name: '規則 8：同一天多筆有效紀錄只計算一天',
+  today: '2026-11-23',
+  records: [
+    { log_date: '2026-11-20', minutes: 30 },
+    { log_date: '2026-11-20', minutes: 60 },
+    { log_date: '2026-11-23', minutes: 45 },
+    { log_date: '2026-11-21', minutes: 150 }
+  ],
+  expect: { minutes: 135, count: 3, days: 2 }
+});
